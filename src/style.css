@@ -1,3 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/cocogoose');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  scrollbar-width: thin;
+  font-family: "COCOGOOSE", sans-serif;
+}
+
+html {
+  /* font-size: 35.5%; */
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 body {
+  width: 100%;
+  font-size: 20px;
   background-color: aqua;
+}
+
+/* header and footer section */
+
+header,
+footer {
+  width: 80vw;
+  height: 8vh;
+  border: 1px solid #333;
+  display: flex;
+  font-weight: 100;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 4rem;
+  cursor: pointer;
+ }
+
+.list-item {
+  text-decoration: none;
+}
+
+.list-item:not(:last-child) {
+  border-right: 3px solid #000;
+  padding-right: 4rem;
+}
+
+.list-item:hover {
+  text-shadow: 0.5rem 1rem 2rem #000;
+}
+
+.logo {
+  display: block;
+  width: 22rem;
+  cursor: pointer;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  letter-spacing: 0.5rem;
+}
+
+/* main section */
+
+main {
+   max-width: 150rem;
+}
+
+main h2 {
+  text-align: center;
+}
+
+#meal {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#meals-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  border: 2px solid #222;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 1rem 1rem 1rem;
+}
+
+#meals-gallery img {
+  display: block;
+  justify-content: center;
+  max-width: 15rem;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#meals-gallery img:hover {
+  transition: scale(4);
+  transform: scale(1.2);
+}
+
+#comments {
+  width: 400px;
+  background-color: #696969;
 }
