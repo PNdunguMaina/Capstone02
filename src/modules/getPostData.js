@@ -36,5 +36,5 @@ const postComments = async (id, name, suggestion) => {
 export {
   findMeals,
   fetchComments,
-  postComments
+  postComments,
 };

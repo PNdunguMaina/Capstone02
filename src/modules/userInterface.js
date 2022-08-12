@@ -81,5 +81,5 @@ export {
   showComments,
   openPopup,
   closePopup,
-  commentsContainer
+  commentsContainer,
 };
