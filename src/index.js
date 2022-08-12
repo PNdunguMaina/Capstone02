@@ -1,12 +1,13 @@
+import _ from 'lodash';
 import './style.css';
-import { findMeals, postComments } from './modules/getPostData';
+import { findMeals, postComments } from './modules/getPostData.js';
 import {
   displayPopUp,
   showComments,
   openPopup,
   closePopup,
   commentsContainer,
-} from './modules/userInterface';
+} from './modules/userInterface.js';
 
 const mealsContainer = document.querySelector('#meal');
 const popupWindow = document.getElementById('pop-up');
