@@ -21,6 +21,7 @@
   "homepage": "https://github.com/PNdunguMaina/Capstone02#readme",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "eslint": "^8.21.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^28.1.3",
     "style-loader": "^3.3.1",

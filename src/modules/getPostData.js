@@ -33,4 +33,8 @@ const postComments = async (id, name, suggestion) => {
   }).then((data) => data.json());
 };
 
-export { findMeals, fetchComments, postComments };
+export {
+  findMeals,
+  fetchComments,
+  postComments
+};

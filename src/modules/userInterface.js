@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { findMeals, fetchComments } from './getPostData.js';
 
 const popup = document.querySelector('.meal-details');
@@ -42,8 +43,6 @@ const commentCounter = (elem, element) => {
 };
 
 // Display comment on the screen
-// eslint-disable-consistent-return
-// eslint-disable-no-return-assign
 const showComments = async (id) => {
   const getComments = await fetchComments(id);
   comments.innerHTML = '';
@@ -54,7 +53,6 @@ const showComments = async (id) => {
 };
 
 // Display comment on the screen
-// eslint-disable-no-unused-vars
 const displayComment = async (id) => {
   const suggestion = await fetchComments(id);
   comments.innerHTML = '';
@@ -74,9 +72,14 @@ const openPopup = (modal) => {
 };
 
 // Close Popup model
-// eslint-disable-object-curly-newline
 const closePopup = (modal) => {
   popupWindow.classList.remove('active');
 };
 
-export { displayPopUp, showComments, openPopup, closePopup, commentsContainer };
+export {
+  displayPopUp,
+  showComments,
+  openPopup,
+  closePopup,
+  commentsContainer
+};
