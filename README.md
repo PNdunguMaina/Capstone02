@@ -51,6 +51,10 @@ Feel free to check the [issues page](../../issues/).
 
 Give a ⭐️ if you like this project!
 
+### Video
+
+click [here](https://drive.google.com/file/d/1OYo6VQ5DWbvomjmlPTur_U6QW1b4dSqp/view?usp=sharing) to watch a video on the main features
+
 ## Acknowledgments
 
 [Microverse](https://www.microverse.org/)
