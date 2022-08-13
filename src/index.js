@@ -1,3 +1,6 @@
+/* eslint-disable no-useless-concat */
+/* eslint-disable prefer-template */
+
 import './style.css';
 import {
   findMeals,
