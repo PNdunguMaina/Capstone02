@@ -33,12 +33,12 @@ const commentsContainer = (suggestion) => {
   </li>`;
 };
 // set comments counter
-const commentCounter = (elem, element) => {
-  if (elem.length) {
-    element.textContent = elem.length;
+const commentCounter = (comments, elementNode) => {
+  if (comments.length) {
+    return elementNode.textContent = comments.length;
   }
-  if (!elem.length) {
-    element.textContent = 0;
+  if (!comments.length) {
+    return elementNode.textContent = 0;
   }
 };
 
