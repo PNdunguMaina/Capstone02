@@ -1,3 +1,160 @@
 body {
+  background-color: antiquewhite;
+}
+
+.main-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(17, 20, 22);
+  position: fixed;
+  width: 100vw;
+  top: 0;
+}
+
+.logo-container {
+  color: darkgoldenrod;
+  display: flex;
+  align-items: center;
+  margin-left: 5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  gap: 2rem;
+}
+
+.nav-menu {
+  display: flex;
+  color: darkgoldenrod;
+  font-size: 2rem;
+  gap: 3rem;
+  font-weight: 700;
+  width: 30vw;
+}
+
+.nav-menu li {
+  list-style: none;
+  cursor: pointer;
+}
+
+#meal {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#meal-container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.pop-up {
+  margin: 25px 6.5% 25px 6.5%;
+  inset: 0;
+  border: 1px solid #fff;
+  position: fixed;
+  overflow-y: scroll;
+  z-index: 1;
+  transform: scale(0);
+  transition: 200ms ease-in-out;
   background-color: aqua;
+}
+
+.active {
+  transform: scale(1);
+}
+
+.close-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1.5rem;
+}
+
+.close-container span {
+  font-size: 5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.meal-description {
+  padding: 1.5rem;
+}
+
+form {
+  display: block;
+  text-align: center;
+}
+
+input {
+  margin-top: 1.5rem;
+}
+
+textarea {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#user-name {
+  height: 2rem;
+}
+
+#suggestion {
+  height: 5rem;
+  padding: 1rem;
+}
+
+.comments-btn {
+  display: block;
+  margin-left: 50%;
+  margin-bottom: 3rem;
+}
+
+.comments-container {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(192, 24, 24);
+}
+
+.meal-div {
+  margin: 2rem;
+}
+
+.home-btns {
+  display: flex;
+  gap: 2rem;
+}
+
+.home-btns i {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.fa-heart:hover {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.footer {
+  background-color: rgb(17, 20, 22);
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  color: darkgoldenrod;
+  height: 3rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
