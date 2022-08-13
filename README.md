@@ -2,7 +2,7 @@
 
 # Capstone02
 
-> Description the project.
+> This project involves fetching meals stored in an API and populating the user interface with those meals. The user can post a comment which is stored in an API and populated on the user interface.
 
 ## Built With
 
@@ -23,13 +23,13 @@ To get a local copy up and running follow these simple example steps.
 
 ### Clone this repository
 
-$ _git clone https://github.com/PNdunguMaina/Capstone02.git_
-$ _cd Capstone02_
+- $ _git clone https://github.com/PNdunguMaina/Capstone02.git_
+- $ _cd Capstone02_
 
 ### Run project
 
-$ _npm install_
-$ _npm run start_
+- $ _npm install_
+- $ _npm run start_
 
 ## Authors
 
