@@ -15,6 +15,7 @@ import {
   closePopup,
   commentsContainer,
 } from './modules/userInterface.js';
+import mealCounter from './modules/mealCounter.js';
 
 const mealsContainer = document.querySelector('#meal');
 const popupWindow = document.getElementById('pop-up');
@@ -22,41 +23,11 @@ const form = document.querySelector('form');
 const input = document.getElementById('user-name');
 const textarea = document.getElementById('suggestion');
 const closeBtn = document.querySelector('.close-button');
+const mealDiv = document.querySelector('#meal-container');
+const totalMeals = document.querySelector('.total-meals');
 
-const displayMeals = async () => {
-  const meals = await findMeals();
-  meals.forEach((meal) => {
-    mealsContainer.innerHTML += `
-    <div id="${meal.idCategory}" class="meal-div">
-      <div class="image-cont">
-        <img
-          src=${meal.strCategoryThumb}
-          alt="food image"
-        />
-      </div>
-      <div>
-        <div><p>${meal.strCategory}</p></div>
-        <div class="home-btns">
-          <button class="comment-btn" type="button" id="${meal.idCategory}">Comments</button>
-          <i class="fa-solid fa-heart"><br><small id="${meal.idCategory}"class="likes-counter">0 likes</small></i>
-        </div>
-      
-  </div>
-  </div>
-        `;
 
-    // implement likes section
-    const likeBtns = document.querySelectorAll('.fa-heart');
-    const likesNo = document.querySelectorAll('.likes-counter');
-
-    likeBtns.forEach((i, index) => {
-      i.addEventListener('click', () => {
-        likesNo[index].innerHTML = parseInt(likesNo[index].innerHTML, 10) + 1 + `${' ' + 'likes'}`;
-        postLikes(index);
-      });
-    });
-  });
-  const getLikes = async () => {
+const getLikes = async () => {
     const mealsDiv = document.querySelectorAll('.meal-div');
     const likesNo = document.querySelectorAll('.likes-counter');
     await fetch(likesUrl)
@@ -71,8 +42,58 @@ const displayMeals = async () => {
         });
       });
   };
-  getLikes();
-};
+
+const displayMeals = async () => {
+  const meals = await findMeals();
+  mealCounter(meals, totalMeals);
+  meals.forEach((meal) => {
+    mealsContainer.innerHTML += `
+    <div id="${meal.idCategory}" class="meal-div">
+      <div class="image-cont">
+        <img
+          src=${meal.strCategoryThumb}
+          alt="food image"
+        />
+      </div>
+      <div>
+        <div><p>${meal.strCategory}</p></div>
+        <div class="home-btns">
+          <button class="comment-btn" type="button" id="${meal.idCategory}">Comments</button>
+          <i class="fa-solid fa-heart"><br><small class="likes-counter">0</small> likes</i>
+        </div>
+      
+  </div>
+  </div>
+        `
+        mealDiv.append(mealsContainer);
+});
+
+
+
+
+// implement likes section
+    const likeBtns = document.querySelectorAll('.fa-heart');
+    const likesNo = document.querySelectorAll('.likes-counter');
+
+    likeBtns.forEach((i, index) => {
+      i.addEventListener('click', () => {
+        likesNo[index].innerHTML = parseInt(likesNo[index].innerHTML, 10) + 1;
+        fetch(likesUrl, {
+          method: 'POST',
+          body: JSON.stringify({
+            item_id: i.id,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+      });
+      getLikes();
+    });
+}
+  
+
+
 
 mealsContainer.addEventListener('click', (event) => {
   const commentBtn = event.target;
