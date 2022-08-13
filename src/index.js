@@ -5,8 +5,7 @@ import './style.css';
 import {
   findMeals,
   postComments,
-  postLikes,
-  likesUrl,
+  getLikes,
 } from './modules/getPostData.js';
 import {
   displayPopUp,
@@ -27,22 +26,6 @@ const mealDiv = document.querySelector('#meal-container');
 const totalMeals = document.querySelector('.total-meals');
 
 
-const getLikes = async () => {
-    const mealsDiv = document.querySelectorAll('.meal-div');
-    const likesNo = document.querySelectorAll('.likes-counter');
-    await fetch(likesUrl)
-      .then((res) => res.json())
-      .then((data) => {
-        mealsDiv.forEach((div, index) => {
-          data.forEach((food) => {
-            if (food.item_id === div.id) {
-              likesNo[index].innerHTML = food.likes;
-            }
-          });
-        });
-      });
-  };
-
 const displayMeals = async () => {
   const meals = await findMeals();
   mealCounter(meals, totalMeals);
@@ -59,41 +42,36 @@ const displayMeals = async () => {
         <div><p>${meal.strCategory}</p></div>
         <div class="home-btns">
           <button class="comment-btn" type="button" id="${meal.idCategory}">Comments</button>
-          <i class="fa-solid fa-heart"><br><small class="likes-counter">0</small> likes</i>
+          <i id="${meal.idCategory}" class="fa-solid fa-heart"></i><small class="likes-counter">0</small> likes
         </div>
       
   </div>
   </div>
         `
-        mealDiv.append(mealsContainer);
-});
+    mealDiv.append(mealsContainer);
+  });
 
+  // implement likes section
+  const likeBtns = document.querySelectorAll('.fa-heart');
+  const likesNo = document.querySelectorAll('.likes-counter');
 
-
-
-// implement likes section
-    const likeBtns = document.querySelectorAll('.fa-heart');
-    const likesNo = document.querySelectorAll('.likes-counter');
-
-    likeBtns.forEach((i, index) => {
-      i.addEventListener('click', () => {
-        likesNo[index].innerHTML = parseInt(likesNo[index].innerHTML, 10) + 1;
-        fetch(likesUrl, {
-          method: 'POST',
-          body: JSON.stringify({
-            item_id: i.id,
-          }),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-          },
-        })
-      });
-      getLikes();
+  likeBtns.forEach((i, index) => {
+    i.addEventListener('click', () => {
+      likesNo[index].innerHTML = `${parseInt(likesNo[index].innerHTML, 10) + 1}`;
+      fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VLkvQrH2CamIWyKQoVQw/likes/', {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: i.id,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
     });
+
+  });
+  getLikes();
 }
-  
-
-
 
 mealsContainer.addEventListener('click', (event) => {
   const commentBtn = event.target;
