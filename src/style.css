@@ -1,5 +1,37 @@
-* {
+body {
   background-color: antiquewhite;
+}
+
+.main-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(17, 20, 22);
+  position: fixed;
+  width: 100vw;
+  top: 0;
+}
+
+.logo-container {
+  color: darkgoldenrod;
+  display: flex;
+  align-items: center;
+  margin-left: 5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-menu {
+  display: flex;
+  color: darkgoldenrod;
+  font-size: 2rem;
+  gap: 3rem;
+  font-weight: 700;
+  width: 30vw;
+}
+
+.nav-menu li {
+  list-style: none;
+  cursor: pointer;
 }
 
 #meal {
@@ -7,8 +39,8 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-#mealsContainer {
-  background-color: aqua;
+#meal-container {
+  margin-top: 100px;
 }
 
 .pop-up {
@@ -20,6 +52,7 @@
   z-index: 1;
   transform: scale(0);
   transition: 200ms ease-in-out;
+  background-color: aqua;
 }
 
 .active {
