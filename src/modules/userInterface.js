@@ -35,10 +35,10 @@ const commentsContainer = (suggestion) => {
 // set comments counter
 const commentCounter = (comments, elementNode) => {
   if (comments.length) {
-    return elementNode.textContent = comments.length;
+    return (elementNode.textContent = comments.length);
   }
   if (!comments.length) {
-    return elementNode.textContent = 0;
+    return (elementNode.textContent = 0);
   }
 };
 

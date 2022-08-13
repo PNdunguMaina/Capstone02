@@ -1,11 +1,12 @@
-import commentsDescription from '../_mocks_/comments.js'
-import mealDescription from '../_mocks_/meals.js'
+import commentsDescription from '../_mocks_/comments.js';
+import mealDescription from '../_mocks_/meals.js';
 import mealCounter from '../src/modules/mealCounter.js';
-import {commentCounter} from '../src/modules/userInterface.js';
+import { commentCounter } from '../src/modules/userInterface.js';
 
 describe('properly count the number of meals', () => {
   test('get total number of elements in an array', () => {
-    document.body.innerHTML = '<h1>Best Meals (<span class="total-meals"></span>)</h1>';
+    document.body.innerHTML =
+      '<h1>Best Meals (<span class="total-meals"></span>)</h1>';
     const totalMeals = document.querySelector('.total-meals');
     expect(mealCounter(mealDescription, totalMeals)).toBe(4);
   });

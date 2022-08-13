@@ -2,11 +2,7 @@
 /* eslint-disable prefer-template */
 
 import './style.css';
-import {
-  findMeals,
-  postComments,
-  getLikes,
-} from './modules/getPostData.js';
+import { findMeals, postComments, getLikes } from './modules/getPostData.js';
 import {
   displayPopUp,
   showComments,
@@ -24,7 +20,6 @@ const textarea = document.getElementById('suggestion');
 const closeBtn = document.querySelector('.close-button');
 const mealDiv = document.querySelector('#meal-container');
 const totalMeals = document.querySelector('.total-meals');
-
 
 const displayMeals = async () => {
   const meals = await findMeals();
@@ -47,7 +42,7 @@ const displayMeals = async () => {
       
   </div>
   </div>
-        `
+        `;
     mealDiv.append(mealsContainer);
   });
 
@@ -57,21 +52,25 @@ const displayMeals = async () => {
 
   likeBtns.forEach((i, index) => {
     i.addEventListener('click', () => {
-      likesNo[index].innerHTML = `${parseInt(likesNo[index].innerHTML, 10) + 1}`;
-      fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VLkvQrH2CamIWyKQoVQw/likes/', {
-        method: 'POST',
-        body: JSON.stringify({
-          item_id: i.id,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
+      likesNo[index].innerHTML = `${
+        parseInt(likesNo[index].innerHTML, 10) + 1
+      }`;
+      fetch(
+        'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VLkvQrH2CamIWyKQoVQw/likes/',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            item_id: i.id,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        }
+      );
     });
-
   });
   getLikes();
-}
+};
 
 mealsContainer.addEventListener('click', (event) => {
   const commentBtn = event.target;

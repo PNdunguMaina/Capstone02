@@ -1,3 +1,5 @@
-const mealCounter = (meals, mealsNo) => { return mealsNo.innerHTML = meals.length; };
+const mealCounter = (meals, mealsNo) => {
+  return (mealsNo.innerHTML = meals.length);
+};
 
 export default mealCounter;

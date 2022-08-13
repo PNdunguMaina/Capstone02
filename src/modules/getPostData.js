@@ -1,5 +1,6 @@
 const mealUrl = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+const baseUrl =
+  'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const appId = 'VLkvQrH2CamIWyKQoVQw';
 const commentUrl = `${baseUrl}apps/${appId}/comments?item_id=`;
 const postCommentUrl = `${baseUrl}apps/${appId}/comments`;
@@ -44,7 +45,7 @@ const postLikes = async (id) => {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
-  })
+  });
   // }).then((data) => data.json());
 };
 
@@ -52,11 +53,13 @@ const postLikes = async (id) => {
 const getLikes = async () => {
   const mealsDiv = document.querySelectorAll('.meal-div');
   const likesNo = document.querySelectorAll('.likes-counter');
-  await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VLkvQrH2CamIWyKQoVQw/likes/')
+  await fetch(
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VLkvQrH2CamIWyKQoVQw/likes/'
+  )
     .then((res) => res.json())
     .then((data) => {
       mealsDiv.forEach((div, index) => {
-        data.forEach(food => {
+        data.forEach((food) => {
           if (food.item_id === div.id) {
             likesNo[index].innerHTML = food.likes;
           }
