@@ -48,8 +48,7 @@ const displayMeals = async () => {
 
     likeBtns.forEach((i, index) => {
       i.addEventListener('click', () => {
-        likesNo[index].innerHTML =
-          parseInt(likesNo[index].innerHTML, 10) + 1 + ' ' + 'likes';
+        likesNo[index].innerHTML = parseInt(likesNo[index].innerHTML, 10) + 1 + `${' ' + 'likes'}`;
         postLikes(index);
       });
     });
