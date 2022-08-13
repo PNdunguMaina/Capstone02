@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable prefer-destructuring */
 
 test('properly return total number of meals displayed', () => {
   const findMeals = () => {
@@ -8,6 +9,6 @@ test('properly return total number of meals displayed', () => {
     const { categories: food } = response.json();
     const length = food.length;
     console.log(length);
-    expect(findMeals()).toBe(14);
-    };    
+  expect(findMeals()).toBe(14);
+    };
 })
