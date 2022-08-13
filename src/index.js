@@ -1,5 +1,10 @@
 import './style.css';
-import { findMeals, postComments, postLikes, likesUrl } from './modules/getPostData.js';
+import {
+  findMeals,
+  postComments,
+  postLikes,
+  likesUrl,
+} from './modules/getPostData.js';
 import {
   displayPopUp,
   showComments,
@@ -41,32 +46,31 @@ const displayMeals = async () => {
     const likeBtns = document.querySelectorAll('.fa-heart');
     const likesNo = document.querySelectorAll('.likes-counter');
 
-
     likeBtns.forEach((i, index) => {
-
       i.addEventListener('click', () => {
-        likesNo[index].innerHTML = parseInt(likesNo[index].innerHTML, 10) + 1 + ' ' + 'likes';
+        likesNo[index].innerHTML =
+          parseInt(likesNo[index].innerHTML, 10) + 1 + ' ' + 'likes';
         postLikes(index);
-      })
-    })
+      });
+    });
   });
   const getLikes = async () => {
     const mealsDiv = document.querySelectorAll('.meal-div');
     const likesNo = document.querySelectorAll('.likes-counter');
-    await fetch(likesUrl).then((res) => res.json()).then(data => {
-      mealsDiv.forEach((div, index) => {
-        data.forEach(food => {
-          if (food.item_id === div.id) {
-            likesNo[index].innerHTML = food.likes
-          }
-        })
-      })
-
-    })
-  }
+    await fetch(likesUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        mealsDiv.forEach((div, index) => {
+          data.forEach((food) => {
+            if (food.item_id === div.id) {
+              likesNo[index].innerHTML = food.likes;
+            }
+          });
+        });
+      });
+  };
   getLikes();
-
-}
+};
 
 mealsContainer.addEventListener('click', (event) => {
   const commentBtn = event.target;
@@ -77,7 +81,6 @@ mealsContainer.addEventListener('click', (event) => {
     openPopup(popupWindow);
   }
 });
-
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();

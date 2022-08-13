@@ -45,7 +45,7 @@ const postLikes = async (id) => {
       'Content-type': 'application/json; charset=UTF-8',
     },
   }).then((data) => data.json());
-}
+};
 
 export {
   findMeals,
