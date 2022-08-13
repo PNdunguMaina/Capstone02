@@ -2,7 +2,8 @@ const mealUrl = 'https://www.themealdb.com/api/json/v1/1/categories.php';
 const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const appId = 'VLkvQrH2CamIWyKQoVQw';
 const commentUrl = `${baseUrl}apps/${appId}/comments?item_id=`;
-const postCommentUrl = `${baseUrl}apps/${appId}/comments/`;
+const postCommentUrl = `${baseUrl}apps/${appId}/comments`;
+const likesUrl = `${baseUrl}apps/${appId}/likes`;
 
 // fetch food details from the base API
 const findMeals = async () => {
@@ -33,8 +34,23 @@ const postComments = async (id, name, suggestion) => {
   }).then((data) => data.json());
 };
 
+// post number of like to the involvement API
+const postLikes = async (id) => {
+  await fetch(likesUrl, {
+    method: 'POST',
+    body: JSON.stringify({
+      item_id: id,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then((data) => data.json());
+}
+
 export {
   findMeals,
   fetchComments,
   postComments,
+  postLikes,
+  likesUrl,
 };

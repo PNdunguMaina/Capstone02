@@ -90,3 +90,23 @@ textarea {
   align-items: center;
   color: rgb(192, 24, 24);
 }
+
+.meal-div {
+  margin: 2rem;
+}
+
+.home-btns {
+  display: flex;
+  gap: 2rem;
+}
+
+.home-btns i {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.fa-heart:hover {
+  cursor: pointer;
+  font-size: 1.2rem;
+}

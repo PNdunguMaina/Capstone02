@@ -1,6 +1,5 @@
-import _ from 'lodash';
 import './style.css';
-import { findMeals, postComments } from './modules/getPostData.js';
+import { findMeals, postComments, postLikes, likesUrl } from './modules/getPostData.js';
 import {
   displayPopUp,
   showComments,
@@ -20,7 +19,7 @@ const displayMeals = async () => {
   const meals = await findMeals();
   meals.forEach((meal) => {
     mealsContainer.innerHTML += `
-    <div id="${meal.idCategory}">
+    <div id="${meal.idCategory}" class="meal-div">
       <div class="image-cont">
         <img
           src=${meal.strCategoryThumb}
@@ -29,24 +28,56 @@ const displayMeals = async () => {
       </div>
       <div>
         <div><p>${meal.strCategory}</p></div>
-      <button class="comment-btn" type="button" id="${meal.idCategory}">Comments</button>
+        <div class="home-btns">
+          <button class="comment-btn" type="button" id="${meal.idCategory}">Comments</button>
+          <i class="fa-solid fa-heart"><br><small id="${meal.idCategory}"class="likes-counter">0 likes</small></i>
+        </div>
+      
   </div>
   </div>
         `;
-    document.querySelectorAll('.comment-btn').forEach((button) => {
-      button.addEventListener('click', openPopup);
-    });
+
+    // implement likes section
+    const likeBtns = document.querySelectorAll('.fa-heart');
+    const likesNo = document.querySelectorAll('.likes-counter');
+
+
+    likeBtns.forEach((i, index) => {
+
+      i.addEventListener('click', () => {
+        likesNo[index].innerHTML = parseInt(likesNo[index].innerHTML, 10) + 1 + ' ' + 'likes';
+        postLikes(index);
+      })
+    })
   });
-};
+  const getLikes = async () => {
+    const mealsDiv = document.querySelectorAll('.meal-div');
+    const likesNo = document.querySelectorAll('.likes-counter');
+    await fetch(likesUrl).then((res) => res.json()).then(data => {
+      mealsDiv.forEach((div, index) => {
+        data.forEach(food => {
+          if (food.item_id === div.id) {
+            likesNo[index].innerHTML = food.likes
+          }
+        })
+      })
+
+    })
+  }
+  getLikes();
+
+}
 
 mealsContainer.addEventListener('click', (event) => {
   const commentBtn = event.target;
-  if (!commentBtn.classList.contains('comment-btn')) return;
-  const id = commentBtn.getAttribute('id');
-  displayPopUp(id);
-  showComments(id);
-  openPopup(popupWindow);
+  if (commentBtn.classList.contains('comment-btn')) {
+    const id = commentBtn.getAttribute('id');
+    displayPopUp(id);
+    showComments(id);
+    openPopup(popupWindow);
+  }
 });
+
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -67,14 +98,3 @@ closeBtn.addEventListener('click', () => {
   closePopup(popupWindow);
 });
 displayMeals();
-
-function component() {
-  const element = document.createElement('div');
-
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
