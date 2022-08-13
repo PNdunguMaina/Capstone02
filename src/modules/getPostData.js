@@ -53,4 +53,5 @@ export {
   postComments,
   postLikes,
   likesUrl,
+  mealUrl,
 };
