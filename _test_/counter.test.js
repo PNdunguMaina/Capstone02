@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable quotes */
 import commentsDescription from '../_mocks_/comments.js';
 import mealDescription from '../_mocks_/meals.js';
 import mealCounter from '../src/modules/mealCounter.js';
@@ -13,7 +14,7 @@ describe('properly count the number of meals', () => {
 });
 
 describe('properly get the total number of comments', () => {
-  document.body.innerHTML = `<h2>Comments (<small class='comments-counter'>0</small>)</h2>`;
+  document.body.innerHTML = `<h2>Comments (<small class="comments-counter">0</small>)</h2>`;
   const commentsNo = document.querySelector('.comments-counter');
   test('get correct number of comments', () => {
     expect(commentCounter(commentsDescription, commentsNo)).toBe(3);
