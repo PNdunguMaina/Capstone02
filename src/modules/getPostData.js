@@ -1,6 +1,5 @@
 const mealUrl = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-const baseUrl =
-  'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
+const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
 const appId = 'VLkvQrH2CamIWyKQoVQw';
 const commentUrl = `${baseUrl}apps/${appId}/comments?item_id=`;
 const postCommentUrl = `${baseUrl}apps/${appId}/comments`;
@@ -54,7 +53,7 @@ const getLikes = async () => {
   const mealsDiv = document.querySelectorAll('.meal-div');
   const likesNo = document.querySelectorAll('.likes-counter');
   await fetch(
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VLkvQrH2CamIWyKQoVQw/likes/'
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VLkvQrH2CamIWyKQoVQw/likes/',
   )
     .then((res) => res.json())
     .then((data) => {

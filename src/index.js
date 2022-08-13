@@ -65,7 +65,7 @@ const displayMeals = async () => {
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
-        }
+        },
       );
     });
   });

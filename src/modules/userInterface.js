@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable consistent-return */
+/* eslint-disable no-return-assign */
 import { findMeals, fetchComments } from './getPostData.js';
 
 const popup = document.querySelector('.meal-details');
