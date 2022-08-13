@@ -44,7 +44,8 @@ const postLikes = async (id) => {
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
-  }).then((data) => data.json());
+  })
+  // }).then((data) => data.json());
 };
 
 export {
