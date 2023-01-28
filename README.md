@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Capstone02
+# delicacies
 
 > This project involves fetching meals stored in an API and populating the user interface with those meals. The user can post a comment which is stored in an API and populated on the user interface.
 
